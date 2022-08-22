@@ -1,11 +1,17 @@
 package biz.aavaz.fsm;
 
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class DriveBrokenCar {
 
-    @Test
+    @Test 
+    @Order(1)
     public void givenParkedCar_whenDrivenAndParked_thenCheckPriceOfCar() {
         System.out.println("Test 1");
         Car aCar = Car.PARKED;
@@ -18,7 +24,8 @@ public class DriveBrokenCar {
         assertEquals(aCar.getPrice(), 10);
     }
 
-    @Test
+    @Test 
+    @Order(2)
     public void givenParkedCar_whenDrivenAndBroken_thenCheckPriceOfCar() {
         System.out.println("Test 2");
         Car aCar = Car.PARKED;
