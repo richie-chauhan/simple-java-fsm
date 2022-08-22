@@ -1,13 +1,14 @@
 package biz.aavaz.fsm;
 
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-@TestMethodOrder(OrderAnnotation.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DriveBrokenCar {
 
     @Test 
@@ -37,5 +38,4 @@ public class DriveBrokenCar {
 
         assertEquals(aCar.getPrice(), 0);
     }
-
 }
