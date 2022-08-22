@@ -1,10 +1,10 @@
-package biz.aavaz.fsmwithvars;
+package biz.aavaz.fsm;
 
 enum Car {
 
     PARKED {
         @Override
-        public Car transition(int input) {
+        public Car shiftGear(int input) {
 
             switch (input) {
                 case 0:
@@ -22,12 +22,15 @@ enum Car {
     },
     MOVING {
         @Override
-        public Car transition(int input) {
+        public Car shiftGear(int input) {
 
             switch (input) {
                 case 0:
                     System.out.println("Going to park");
                     return Car.PARKED;
+                case 1:
+                    System.out.println("Continuing on moving");
+                    return Car.MOVING;
                 default:
                     System.out.println("Breakdown");
                     return Car.BROKEN;
@@ -35,38 +38,53 @@ enum Car {
         }
     },
     BROKEN {
+        
         @Override
-        public Car transition(int input) {
+        public Car shiftGear(int input) {
             this.price = 0;
             System.out.println("Still broken");
             return Car.BROKEN;
         }
     };
 
-    public int price;
+    //Other variables
+    private int price;
+    
+    
+    private void setPrice() {
+
+    // this will refer to the object SMALL
+    switch(this) {
+      case PARKED:
+        this.price = 10;
+        break;
+
+      case MOVING:
+        this.price = 100;
+        break;
+
+      case BROKEN:
+        this.price = 0;
+        break;
+
+      default:
+        this.price = 0;
+        break;
+      }
+   }
+    
 
     Car() {
-        System.out.println("Constructor Called");
+        System.out.println("Constructor Called for " + this.name());
         price = 10;
     }
 
-    public abstract Car transition(int input);
-
-    int getPrice() {
+    public int getPrice() {
+        this.setPrice();
         return price;
     }
-}
 
-public class Main {
+    //Abstract methods
+    public abstract Car shiftGear(int input);
 
-    public static void main(String args[]) {
-
-        Car aCar = Car.valueOf("PARKED");
-        System.out.println("aCar.price: " + aCar.price);
-        aCar = aCar.transition(1);
-        System.out.println(aCar.getPrice());
-        aCar = aCar.transition(1);
-        System.out.println(aCar.getPrice());
-
-    }
 }
