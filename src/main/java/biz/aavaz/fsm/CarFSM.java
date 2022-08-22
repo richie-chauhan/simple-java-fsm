@@ -36,7 +36,6 @@ enum Car {
         }
     },
     BROKEN {
-        
         @Override
         public Car shiftGear(int input) {
             System.out.println("Still broken");
@@ -44,6 +43,9 @@ enum Car {
         }
     };
 
+    //https://www.programiz.com/java-programming/enum-string
+    //https://www.programiz.com/java-programming/enum-constructor
+    
     //Other variables
     private int price;
     

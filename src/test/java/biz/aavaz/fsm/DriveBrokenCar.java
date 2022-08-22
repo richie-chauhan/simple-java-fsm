@@ -7,6 +7,7 @@ public class DriveBrokenCar {
 
     @Test
     public void givenParkedCar_whenDrivenAndParked_thenCheckPriceOfCar() {
+        System.out.println("Test 1");
         Car aCar = Car.PARKED;
         System.out.println("aCar.price: " + aCar.getPrice());
         aCar = aCar.shiftGear(1);
@@ -19,6 +20,7 @@ public class DriveBrokenCar {
 
     @Test
     public void givenParkedCar_whenDrivenAndBroken_thenCheckPriceOfCar() {
+        System.out.println("Test 2");
         Car aCar = Car.PARKED;
         System.out.println("aCar.price: " + aCar.getPrice());
         aCar = aCar.shiftGear(1);
