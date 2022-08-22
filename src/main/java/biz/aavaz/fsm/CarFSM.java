@@ -8,12 +8,10 @@ enum Car {
 
             switch (input) {
                 case 0:
-                    return Car.PARKED;
+                    return this;
                 case 1:
                     System.out.println("Transitioning to moving");
-                    Car newCar = Car.MOVING;
-                    newCar.price = 100;
-                    return newCar;
+                    return Car.MOVING;
                 default:
                     System.out.println("Broke down");
                     return Car.BROKEN;
@@ -30,7 +28,7 @@ enum Car {
                     return Car.PARKED;
                 case 1:
                     System.out.println("Continuing on moving");
-                    return Car.MOVING;
+                    return this;
                 default:
                     System.out.println("Breakdown");
                     return Car.BROKEN;
@@ -41,9 +39,8 @@ enum Car {
         
         @Override
         public Car shiftGear(int input) {
-            this.price = 0;
             System.out.println("Still broken");
-            return Car.BROKEN;
+            return this;
         }
     };
 
